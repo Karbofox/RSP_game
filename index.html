@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Камень-Ножницы-Бумага</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Камень-Ножницы-Бумага</h1>
+
+<button onclick="playGame('rock')">Камень</button>
+<button onclick="playGame('scissors')">Ножницы</button>
+<button onclick="playGame('paper')">Бумага</button>
+
+<p id="result"></p>
+
+<script>
+    function playGame(playerChoice) {
+        var choices = ['rock', 'scissors', 'paper'];
+        var computerChoice = choices[Math.floor(Math.random() * 3)];
+
+        var result = '';
+
+        if (playerChoice === computerChoice) {
+            result = 'Ничья!';
+        } else if (
+            (playerChoice === 'rock' && computerChoice === 'scissors') ||
+            (playerChoice === 'scissors' && computerChoice === 'paper') ||
+            (playerChoice === 'paper' && computerChoice === 'rock')
+        ) {
+            result = 'Вы победили!';
+        } else {
+            result = 'Компьютер победил!';
+        }
+
+        document.getElementById('result').innerHTML = 'Вы выбрали ' + playerChoice + ', компьютер выбрал ' + computerChoice + '. ' + result;
+    }
+</script>
+
+</body>
+</html>
